@@ -1,0 +1,1183 @@
+@font-face {
+    font-family: 'opendyslexic';
+    src: url('../fonts/opendyslexic-regular-webfont.eot');
+    src: url('../fonts/opendyslexic-regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/opendyslexic-regular-webfont.woff') format('woff'),
+         url('../fonts/opendyslexic-regular-webfont.ttf') format('truetype'),
+         url('../fonts/opendyslexic-regular-webfont.svg#opendyslexicregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'opendyslexic';
+    src: url('../fonts/opendyslexic-bold-webfont.eot');
+    src: url('../fonts/opendyslexic-bold-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/opendyslexic-bold-webfont.woff') format('woff'),
+         url('../fonts/opendyslexic-bold-webfont.ttf') format('truetype'),
+         url('../fonts/opendyslexic-bold-webfont.svg#opendyslexicbold') format('svg');
+    font-weight: bold;
+    font-style: normal;
+}
+
+//Mixins
+.visuallyHidden {
+    position:absolute;
+    left:-10000px;
+    top:auto;
+    width:1px;
+    height:1px;
+    overflow:hidden;
+}
+
+.mobile {
+    .desktop-only {
+        display: none!important;
+
+        * {
+            display: none!important;
+        }
+    }
+}
+
+.desktop {
+    .mobile-only {
+        display: none!important;
+
+        * {
+            display: none!important;
+        }
+    }
+}
+
+.clearFix {
+    clear: both;
+}
+
+.borderBox {
+    box-sizing:border-box;
+    -moz-box-sizing:border-box;
+    -webkit-box-sizing:border-box;
+}
+
+.shortcut {
+    text-decoration: underline;
+}
+
+.animationTime(@duration) {
+    -moz-animation-duration: @duration;
+    -webkit-animation-duration: @duration;
+    -o-animation-duration: @duration;
+    animation-duration: @duration;
+}
+
+@-webkit-keyframes enlarge {
+    0% { -webkit-transform: scale(1); } 
+    100% { -webkit-transform: scale(1.4); }
+}
+@-moz-keyframes enlarge {
+    0% { -moz-transform: scale(1); }    
+    100% { -moz-transform: scale(1.4); }
+}
+@-o-keyframes enlarge {
+    0% { -o-transform: scale(1); }  
+    100% { -o-transform: scale(1.4); }
+}
+@keyframes enlarge {
+    0% { transform: scale(1); } 
+    100% { transform: scale(1.4); }
+}
+
+.grow {
+    -webkit-animation-name: enlarge;
+    -moz-animation-name: enlarge;
+    -o-animation-name: enlarge;
+    animation-name: enlarge;
+
+    -webkit-animation-fill-mode: both;
+    -moz-animation-fill-mode: both;
+    -o-animation-fill-mode: both;
+    animation-fill-mode: both;
+
+    .animationTime(0.3s);
+}
+
+.removeAnimation {
+    -webkit-animation-name: none!important;
+    -moz-animation-name: none!important;
+    -o-animation-name: none!important;
+    animation-name: none!important;
+}
+
+.gradientBackground(@fallback, @start, @end) {
+    background: @fallback;
+    background: -moz-linear-gradient(top,  @start 0%, @end 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,@start), color-stop(100%,@end));
+    background: -webkit-linear-gradient(top,  @start 0%,@end 100%);
+    background: -o-linear-gradient(top,  @start 0%,@end 100%);
+    background: -ms-linear-gradient(top,  @start 0%,@end 100%);
+    background: linear-gradient(to bottom,  @start 0%,@end 100%);
+    filter:~"progid:DXImageTransform.Microsoft.gradient(startColorstr='@{start}', endColorstr='@{end}', GradientType=0)";
+
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+.noSelect {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+
+    -webkit-tap-highlight-color: rgba(255, 255, 255, 0); //Fixes a bug with chrome for android
+}
+
+@highdensity: ~"only screen and (-webkit-min-device-pixel-ratio: 1.5)",
+              ~"only screen and (min--moz-device-pixel-ratio: 1.5)",
+              ~"only screen and (-o-min-device-pixel-ratio: 3/2)",
+              ~"only screen and (min-device-pixel-ratio: 1.5)";
+
+
+//Colour themes
+@oriental_backgroundStart: rgb(0, 162, 217);
+@oriental_backgroundEnd: rgb(0, 62, 88);
+@oriental_backgroundSolid: average(@oriental_backgroundStart, @oriental_backgroundEnd);
+@oriental_buttonBackground: rgb(0, 139, 197);
+@oriental_buttonHover: rgb(0, 119, 163);
+@oriental_darkText: rgb(0, 51, 77);
+@oriental_lightText: rgb(252, 252, 252);
+@oriental_cellEditable: rgb(252, 252, 252);
+@oriental_cellEditableText: rgb(51, 51, 51);
+@oriental_cellNotEditable: rgb(220, 224, 244);
+@oriental_cellNotEditableText: rgb(82, 82, 82);
+@oriental_cellInvalid: rgb(170, 72, 59);
+@oriental_cellValid: rgb(111, 133, 58);
+
+@dark_backgroundSolid: rgb(43, 47, 51);
+@dark_buttonBackground: rgb(85, 89, 92);
+@dark_buttonHover: rgb(170, 172, 173);
+@dark_darkText: rgb(43, 47, 51);
+@dark_lightText: rgb(252, 252, 252);
+@dark_cellEditable: rgb(252, 252, 252);
+@dark_cellEditableText: rgb(51, 51, 51);
+@dark_cellNotEditable: rgb(51, 51, 51);
+@dark_cellNotEditableText: rgb(252, 252, 252);
+@dark_cellInvalid: rgb(255, 0, 0);
+@dark_cellValid: rgb(0, 255, 0);
+
+@light_backgroundSolid: rgb(252, 252, 252);
+@light_buttonBackground: rgb(170, 172, 173);
+@light_buttonHover: rgb(85, 89, 92);
+@light_darkText: rgb(43, 47, 51);
+@light_lightText: rgb(252, 252, 252);
+@light_cellEditable: rgb(252, 252, 252);
+@light_cellEditableText: rgb(51, 51, 51);
+@light_cellNotEditable: rgb(51, 51, 51);
+@light_cellNotEditableText: rgb(252, 252, 252);
+@light_cellInvalid: rgb(255, 0, 0);
+@light_cellValid: rgb(0, 255, 0);
+
+
+
+//Standard style (oriental)
+html {
+    height: 100%;
+
+    ::selection,
+    ::-moz-selection {
+        color: @oriental_lightText;
+        background-color: @oriental_backgroundEnd;
+    }
+
+    body {
+        height: 100%;
+        font-size: 100%;
+        color: @oriental_lightText;
+        .gradientBackground(@oriental_backgroundStart, @oriental_backgroundStart, @oriental_backgroundEnd);
+        overflow-x: hidden; //stops animations creating scroll bars in firefox
+    }
+
+    .fork-link {
+        display: block;
+        z-index: 999;
+        position: absolute;
+
+        .git-white {
+            display: none;
+        }
+        .git-black {
+            display: block;
+        }
+    }
+
+    .applicationWrapper {
+        position: relative;
+        min-height: 100%;
+        height: auto !important;
+        height: 100%;
+        padding-bottom: 1.5em;
+        .borderBox;
+
+        #messageOutput {
+            .visuallyHidden;
+        }
+
+        .ledge {
+            background-color: #580301;
+            height: 50px;
+        }
+
+        .logo {
+            margin: 30px auto;
+            display: block;
+
+            &.dark {
+                display: none;
+            }
+        }
+
+        .backdrop {
+            position: absolute;
+            z-index: -100;
+            bottom: 0;
+            width: 100%;
+            height: 412px;
+//            background: url('../img/shadow-backdrop@1x.png');
+
+            @media @highdensity {
+//                background: url('../img/shadow-backdrop@2x.png');
+                background-size: 1854px 412px;
+            }
+        }
+
+        .screen {
+            display: none;
+            max-width: 700px;
+//            width: 90%;
+            margin: 0 auto;
+
+
+            header {
+                h1 {
+/*                    height: 32px;
+                    line-height: 32px;
+                    text-align: center;
+                    font-size: 1.7em;
+                    margin: 0;
+*/                }
+
+                .back {
+  /*                  position: absolute;
+                  height: 32px;
+  //                  width: 60px;
+                    cursor: pointer;
+  //                  .noSelect;
+  //                    background: url('../img/back_light@1x.png') no-repeat;
+*/
+                    @media @highdensity {
+//                        background-image: url('../img/back_light@2x.png');
+//                        background-size: contain;
+                   }
+                }
+            }
+
+
+            .menu {
+                list-style: none;
+                overflow: hidden;
+                padding: 0;
+                text-align: center;
+                margin: 1em 1em;
+
+                div {
+//                    margin: 0 auto 0.8em;
+                    display: block;
+
+                    .noSelect;
+
+                    &.pulse {
+                        .animationTime(0.4s);
+                    }
+
+                    &.continueButton {
+                        display: none;
+                    }
+
+                    .menuItem {
+
+                        width: 70%;
+                        margin: 0 auto;
+//                        padding: 0.4em;
+                        cursor: pointer;
+                        text-align: center;
+//                        font-size: 1.5em;
+//                        font-weight: bold;
+//                        background-color: @oriental_buttonBackground;
+                        overflow: hidden; //to clear
+
+                        &.pulse {
+                            .animationTime(0.4s);
+                        }
+
+                        .name {
+                            float: left;
+//                            margin-left: 0.2em;
+                        }
+                        
+                        .value {
+                            float: right;
+//                            margin-right: 0.2em;
+                        }
+                    }
+
+                    .leftArrow {
+                        display: none;
+                        margin: 0.1em 0.5em;
+                        border-top: 1.4em solid transparent;
+                        border-bottom: 1.4em solid transparent;
+                        border-right: 1.9em solid @oriental_buttonHover;
+                        cursor: pointer;
+                    }
+
+                    .rightArrow {
+                        display: none;
+                        margin: 0.1em 0.5em;
+                        border-top: 1.4em solid transparent;
+                        border-bottom: 1.4em solid transparent;
+                        border-left: 1.9em solid @oriental_buttonHover;
+                        cursor: pointer;
+                    }
+                }
+            }
+
+            &#menuScreen {
+                display: block;
+                padding: 0 0;
+            }
+
+            &#helpScreen {
+                .content {
+                    line-height: 1.4;
+                    .borderBox;
+                    padding: 1em 2em;
+                    width: 90%;
+                    margin: 1em auto;
+                    background-color: @oriental_buttonBackground;
+
+                    .keyboard {
+                        width: 120%;
+                        height: auto;
+                        margin: 2em -10% 1em;
+                        display: block;
+                    }
+                }
+                
+                ul li {
+	                margin-bottom: 0.5em;
+                }
+            }
+
+            &#gameScreen {
+                .controls {
+                    width: 90%;
+                    position: relative;
+//                    margin: 1em auto 1.5em;
+                    overflow: hidden; //to clear
+                    text-align: center;
+
+                    .button {
+//                        .borderBox;
+                        .noSelect;
+                        cursor: pointer;
+/*                        display: block;
+                        float: left;
+                        text-align: center;
+                        padding: 0.6em 1em;
+*/
+//                        background-color: @oriental_buttonBackground;
+//                        width: 33.33333333333333%;
+//                        border-right: 1px solid @oriental_lightText;
+
+                        &:first-letter {
+                            text-decoration: underline;
+                        }
+
+                        &:last-child {
+                            border-right: none;
+                        }
+
+                        &.disabled {
+//                            background: @oriental_darkText url("../img/texture_light@1x.png");
+
+                            @media @highdensity {
+                                background-image: url('../img/texture_light@2x.png');
+                                background-size: 10px 10px;
+                            }
+                            cursor: default;
+                        }
+                    }
+                }
+
+                .gameGridWrapper {
+                    border: 1px solid @oriental_darkText;
+                    background-color: @oriental_darkText;
+                    border-radius: 4px;
+                    margin: 0.5em auto 0;
+                    width: 90%;
+
+                    .gameComplete {
+                        position: absolute;
+                        .borderBox;
+                        z-index: 99999;
+                        padding: 2em 0;
+                        width: 80%;
+                        margin: 20% 5%;
+                        background: #D47733;
+                        box-shadow: 0px 0px 0px 5px rgba(0, 0, 0, 0.5); //Drop shadow, gracefully degrades
+                        text-align: center;
+                    }
+                
+                    .gameGrid {
+
+                        &div, div {
+                            .borderBox;
+                            cursor: default;
+                            .noSelect;
+                        }
+
+                        position: relative;
+                        font-size: 1.5em;
+
+                        .squareWrapper {
+                            width: 33.33333333333333%;
+                            padding-bottom: 33.33333333333333%;
+                            position: relative;
+                            float: left;
+
+                            .square {
+                                position: absolute;
+                                top: 0;
+                                bottom: 0;
+                                left: 0;
+                                right: 0;
+
+                                border: 1px solid @oriental_darkText;
+
+                                .cellWrapper {
+                                    width: 33.33333333333333%;
+                                    padding-bottom: 33.33333333333333%;
+                                    position: relative;
+                                    float: left;
+
+                                    .inputPad {
+                                        position: absolute;
+                                        z-index: 9999;
+                                        box-shadow: 0px 0px 0px 5px rgba(0, 0, 0, 0.5); //Drop shadow, gracefully degrades
+
+                                        &.rightHandSide {
+                                            right: 0;
+                                        }
+
+                                        &.bottomRow {
+                                            bottom: 0;
+                                        }
+
+                                        .inputButton {
+                                            padding: 0.25em 0.5em;
+                                            border: 1px solid @oriental_lightText;
+                                            cursor: pointer;
+                                            text-align: center;
+                                            background-color: @oriental_buttonBackground;
+
+                                            &:hover,
+                                            &.current {
+                                                color: @oriental_darkText;
+                                                background: @oriental_buttonHover url("../img/texture_light@1x.png");
+
+                                                @media @highdensity {
+                                                    background-image: url('../img/texture_light@2x.png');
+                                                    background-size: 10px 10px;
+                                                }
+                                            }
+                                        }
+                                    }
+
+                                    .cell {
+                                        position: absolute;
+                                        top: 0;
+                                        bottom: 0;
+                                        left: 0;
+                                        right: 0;
+                                        color: @oriental_cellNotEditableText;
+                                        //background: @oriental_cellNotEditable url("../img/texture_light@1x.png");
+                                        background-color: @oriental_cellNotEditable;
+                                        border: 1px solid darken(@oriental_cellEditable, 20%);
+                                        text-align: center;
+
+                                        @media @highdensity {
+                                            background-image: url('../img/texture_light@2x.png');
+                                            background-size: 10px 10px;
+                                        }
+
+                                        &.editable {
+                                            background: @oriental_cellEditable;
+                                            color: @oriental_cellEditableText;
+                                        }
+
+                                        &.invalid {
+                                            background-color: @oriental_cellInvalid;
+                                        }
+
+                                        &.valid {
+                                            background-color: @oriental_cellValid;
+                                        }
+
+                                        &.fadeOut {
+                                            background-color: @oriental_lightText;
+                                            -webkit-transition: background-color 1000ms linear;
+                                            -moz-transition: background-color 1000ms linear;
+                                            -o-transition: background-color 1000ms linear;
+                                            -ms-transition: background-color 1000ms linear;
+                                            transition: background-color 1000ms linear;
+                                        }
+
+                                        &:before {
+                                            content: '';
+                                            display: inline-block;
+                                            height: 100%; 
+                                            vertical-align: middle;
+                                            margin-right: -0.25em;
+                                        }
+
+                                        .cellValue {
+                                            display: inline-block;
+                                            vertical-align: middle;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+
+                        
+                    }
+                }
+            }
+        }
+    }
+
+
+    &.dyslexic {
+        body {
+            font-family: opendyslexic;
+        }
+    }
+
+    &.bigger {
+        body {
+            font-size: 115%;
+        }
+    }
+
+    &.biggest {
+        body {
+            font-size: 125%;
+        }
+    }
+
+
+    //Desktop only styles
+    &.desktop {
+        .applicationWrapper {
+            .screen {
+                .menu {
+                    .selected {
+                        color: @oriental_darkText;
+                        background-color: @oriental_buttonHover;
+
+                        &:before {
+                            content: '';
+                            float: left;
+                            margin: 0.15em 0 0 0.5em;
+                            width: 0; 
+                            height: 0; 
+                            border-top: 0.5em solid transparent;
+                            border-bottom: 0.5em solid transparent;
+                            border-left: 0.8em solid @oriental_darkText;
+                        }
+                        &:after {
+                            content: '';
+                            float: right;
+                            margin: 0.15em 0.5em 0 0;
+                            width: 0; 
+                            height: 0; 
+                            border-top: 0.5em solid transparent;
+                            border-bottom: 0.5em solid transparent;
+                            border-right: 0.8em solid @oriental_darkText;
+                        }
+                    }
+
+                    &.optionsMenu {
+                        .selected {
+                            &:before,
+                            &:after {
+                                display: none;
+                            }
+                        }
+                    }
+                }
+
+                &#gameScreen {
+                    .controls {
+                        .button {
+                            &.pressed,
+                            &:hover {
+                                color: @oriental_darkText;
+                                background-color: @oriental_buttonHover;
+
+                                &:before {
+                                    content: '';
+                                    float: left;
+                                    margin: 0.1em 0 0 0;
+                                    width: 0; 
+                                    height: 0; 
+                                    border-top: 0.5em solid transparent;
+                                    border-bottom: 0.5em solid transparent;
+                                    border-left: 0.8em solid @oriental_darkText;
+                                }
+                                &:after {
+                                    content: '';
+                                    float: right;
+                                    margin: 0.1em 0 0 0;
+                                    width: 0; 
+                                    height: 0; 
+                                    border-top: 0.5em solid transparent;
+                                    border-bottom: 0.5em solid transparent;
+                                    border-right: 0.8em solid @oriental_darkText;
+                                }
+                            }
+
+                            &.disabled {
+                                background-color: @oriental_darkText;
+                                &.pressed,
+                                &:hover {
+                                    color: inherit;
+                                    &:before,
+                                    &:after {
+                                        border: none;
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    .gameGridWrapper {
+                        .gameGrid {
+                            &.inprogress {
+                                .squareWrapper {
+                                    .square {
+                                        .cellWrapper {
+                                            .cell {
+                                                &.selected {
+                                                    z-index: 1000;
+                                                    .grow;
+
+                                                    &.hasInputPad {
+                                                        .removeAnimation;
+                                                    }
+                                                }
+
+                                                &.editable {
+                                                    cursor: pointer;
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+
+    //Mobile only styles
+    &.mobile {
+        .applicationWrapper {
+            .screen {
+                &#gameScreen {
+                    .gameGridWrapper {
+                        .gameGrid {
+                            .squareWrapper {
+                                .square {
+                                    .cellWrapper {
+                                        .inputPad {
+                                            font-size: 1.2em;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            .backdrop {
+                height: 352px;
+                background-position: -205px 0;
+            }
+        }
+    }
+
+
+    //Dark theme
+    &.dark {
+        ::selection,
+        ::-moz-selection {
+            color: @dark_lightText;
+            background-color: @dark_backgroundSolid;
+        }
+
+        body {
+            color: @dark_lightText;
+            background: @dark_backgroundSolid;
+        }
+
+        .fork-link {
+            .git-white {
+                display: block;
+            }
+            .git-black {
+                display: none;
+            }
+        }
+
+        .applicationWrapper {
+            .ledge {
+                background: @dark_lightText;
+            }
+
+            .screen {
+                .menu {
+                    li {
+                        .menuItem {
+                            background-color: @dark_buttonBackground;
+                            &.selected {
+                                &:before {
+                                    border-left-color: @dark_darkText;
+                                }
+                                &:after {
+                                    border-right-color: @dark_darkText;
+                                }
+                            }
+                        }
+                        .leftArrow {
+                            border-right-color: @dark_buttonHover;
+                        }
+
+                        .rightArrow {
+                            border-left-color: @dark_buttonHover;
+                        }
+                    }
+                }
+
+                &#helpScreen {
+                    .content {
+                        background-color: @dark_buttonBackground;
+                    }
+                }
+
+                &#gameScreen {
+                    .controls {
+                        .button {
+                            background-color: @dark_buttonBackground;
+                            border-right-color: @dark_lightText;
+
+                            &.disabled {
+                                background-color: @dark_darkText;
+                            }
+                        }
+                    }
+                    .gameGridWrapper {
+                        border-color: @dark_darkText;
+                        background-color: @dark_darkText;
+
+                        .gameComplete {
+                            background-color: @dark_backgroundSolid;
+                        }
+
+                        .gameGrid {
+                            .squareWrapper {
+                                .square {
+                                    border-color: @dark_darkText;
+                                    .cellWrapper {
+                                        .inputPad {
+                                            .inputButton {
+                                                border-color: @dark_lightText;
+                                                background-color: @dark_buttonBackground;
+
+                                                &:hover,
+                                                &.current {
+                                                    color: @dark_darkText;
+                                                    background-color: @dark_buttonHover;
+                                                }
+                                            }
+                                        }
+
+                                        .cell {
+                                            background-color: @dark_darkText;
+
+                                            &.editable {
+                                                background: @dark_lightText;
+                                                color: @dark_darkText;
+                                            }
+
+                                            &.invalid {
+                                                background-color: @dark_cellInvalid;
+                                            }
+
+                                            &.valid {
+                                                background-color: @dark_cellValid;
+                                            }
+
+                                            &.fadeOut {
+                                                background-color: @dark_lightText;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        &.desktop {
+            .applicationWrapper {
+                .screen {
+                    .menu {
+                        li {
+                            .menuItem {
+                                &.selected {
+                                    color: @dark_darkText;
+                                    background-color: @dark_buttonHover;
+                                }
+                            }
+                        }
+                    }
+
+                    &#gameScreen {
+                        .controls {
+                            .button {
+                                &.pressed,
+                                &:hover {
+                                    color: @dark_darkText;
+                                    background-color: @dark_buttonHover;
+
+                                    &:before {
+                                        border-left-color: @dark_darkText;
+                                    }
+                                    &:after {
+                                        border-right-color: @dark_darkText;
+                                    }
+                                }
+
+                                &.disabled {
+                                    background-color: @dark_darkText;
+
+                                    &.pressed,
+                                    &:hover {
+                                        color: inherit;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+
+    //Light theme
+    &.light {
+        ::selection,
+        ::-moz-selection {
+            color: @light_backgroundSolid;
+            background-color: @light_darkText;
+        }
+
+        body {
+            color: @light_darkText;
+            background: @light_backgroundSolid;
+        }
+
+        .applicationWrapper {
+            .ledge {
+                background: @light_darkText;
+            }
+
+            .logo {
+                &.light {
+                  display: none;
+                }
+
+                &.dark {
+                    display: block;
+                }
+            }
+
+            .screen {
+                header {
+                    .back {
+/*                        background: url('../img/back_dark@1x.png') no-repeat;
+                        background-size: contain;
+
+                        @media @highdensity {
+                            background-image: url('../img/back_dark@2x.png');
+                            background-size: contain;
+                        }
+*/                    }
+                }
+
+                .menu {
+                    li {
+                        .menuItem {
+                            background-color: @light_buttonBackground;
+                            &.selected {
+                                &:before {
+                                    border-left-color: @light_lightText;
+                                }
+                                &:after {
+                                    border-right-color: @light_lightText;
+                                }
+                            }
+                        }
+                        .leftArrow {
+                            border-right-color: @light_buttonHover;
+                        }
+
+                        .rightArrow {
+                            border-left-color: @light_buttonHover;
+                        }
+                    }
+                }
+
+                &#helpScreen {
+                    .content {
+                        background-color: @light_buttonBackground;
+                    }
+                }
+
+                &#gameScreen {
+                    .controls {
+                        .button {
+                            background-color: @light_buttonBackground;
+                            border-right-color: @light_lightText;
+
+                            &.disabled {
+                                background-color: @dark_darkText;
+                                color: @light_lightText;
+                            }
+                        }
+                    }
+                    .gameGridWrapper {
+                        border-color: @light_darkText;
+                        background-color: @light_darkText;
+
+                        .gameComplete {
+                            background-color: @light_backgroundSolid;
+                        }
+
+                        .gameGrid {
+                            .squareWrapper {
+                                .square {
+                                    border-color: @light_darkText;
+                                    .cellWrapper {
+                                        .inputPad {
+                                            .inputButton {
+                                                border-color: @light_lightText;
+                                                background-color: @light_buttonBackground;
+
+                                                &:hover,
+                                                &.current {
+                                                    color: @light_lightText;
+                                                    background-color: @light_buttonHover;
+                                                }
+                                            }
+                                        }
+
+                                        .cell {
+                                            background-color: @light_darkText;
+
+                                            &.editable {
+                                                background: @light_lightText;
+                                                color: @light_darkText;
+                                            }
+
+                                            &.invalid {
+                                                background-color: @light_cellInvalid;
+                                            }
+
+                                            &.valid {
+                                                background-color: @light_cellValid;
+                                            }
+
+                                            &.fadeOut {
+                                                background-color: @light_lightText;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        &.desktop {
+            .applicationWrapper {
+                .screen {
+                    .menu {
+                        li {
+                            .menuItem {
+                                &.selected {
+                                    color: @light_lightText;
+                                    background-color: @light_buttonHover;
+                                }
+                            }
+                        }
+                    }
+
+                    &#gameScreen {
+                        .controls {
+                            .button {
+                                &.pressed,
+                                &:hover {
+                                    color: @light_lightText;
+                                    background-color: @light_buttonHover;
+
+                                    &:before {
+                                        border-left-color: @light_lightText;
+                                    }
+                                    &:after {
+                                        border-right-color: @light_lightText;
+                                    }
+                                }
+
+                                &.disabled {
+                                    background-color: @light_darkText;
+                                    color: @light_lightText;
+
+                                    &.pressed,
+                                    &:hover {
+                                        color: @light_lightText;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    //Media queries
+    @media screen and (max-width: 710px) {
+        .fork-link {
+            display: none;
+        }
+
+        .applicationWrapper {
+            .logo {
+                width: 90%;
+                margin: 20px auto 20px;
+                height: auto;
+            }
+
+            .screen {
+                header {
+                    h1 {
+/*                        font-size: 1.2em;
+                        height: 22.4px;
+                        line-height: 22.4px;
+*/                    }
+                    .back {
+//                        height: 22.4px;
+//                        width: 42px;
+//                        background-size: contain;
+                    }
+                }
+                &#gameScreen {
+                    .controls {
+                        width: 100%;
+
+                        .button {
+                            padding: 0.6em 0.5em;
+                        }
+                    }
+
+                    .gameGridWrapper {
+                        width: 100%;
+                        .gameGrid {
+                            font-size: 1.2em;
+                        }
+
+                        .gameComplete {
+                            margin: 10% 10%;
+                        }
+                    }
+                }
+
+                .menu {
+                    li {
+                        .menuItem {
+                            font-size: 1.125em;
+                        }
+
+                        .leftArrow {
+                            margin: 0.07500000000000001em 0.375em;
+                            border-top-width: 1.0499999999999998em;
+                            border-bottom-width: 1.0499999999999998em;
+                            border-right-width: 1.4249999999999998em;
+                        }
+
+                        .rightArrow {
+                            margin: 0.07500000000000001em 0.375em;
+                            border-top-width: 1.0499999999999998em;
+                            border-bottom-width: 1.0499999999999998em;
+                            border-left-width: 1.4249999999999998em;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    @media screen and (max-width: 500px) {
+        .applicationWrapper {
+            #menuScreen {
+                padding: 0.5em 0;
+            }
+
+            #gameScreen {
+                .controls {
+                    font-size: 0.9em;
+                    .button {
+                        padding: 0.3em 0.5em;
+                    }
+                }
+
+                .gameGridWrapper {
+                    .gameGrid {
+                        font-size: 0.9em;
+                    }
+                }
+            }
+        }
+    }
+}

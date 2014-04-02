@@ -1,42 +1,202 @@
-<!DOCTYPE html>
-<!--
-    Licensed to the Apache Software Foundation (ASF) under one
-    or more contributor license agreements.  See the NOTICE file
-    distributed with this work for additional information
-    regarding copyright ownership.  The ASF licenses this file
-    to you under the Apache License, Version 2.0 (the
-    "License"); you may not use this file except in compliance
-    with the License.  You may obtain a copy of the License at
-
-    http://www.apache.org/licenses/LICENSE-2.0
-
-    Unless required by applicable law or agreed to in writing,
-    software distributed under the License is distributed on an
-    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
-     KIND, either express or implied.  See the License for the
-    specific language governing permissions and limitations
-    under the License.
--->
+﻿<!DOCTYPE html>
 <html>
     <head>
-        <meta charset="utf-8" />
-        <meta name="format-detection" content="telephone=no" />
-        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
-        <link rel="stylesheet" type="text/css" href="css/index.css" />
-        <title>Hello World</title>
+        <meta charset="utf-8">
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+
+        <title>Sudoku</title>
+
+        <link rel="icon" type="image/png" href="img/favicon.png" />
+        <link rel="apple-touch-icon-precomposed" sizes="57x57" href="img/apple-favicon-iphone.png" />
+        <link rel="apple-touch-icon-precomposed" sizes="114x114" href="img/apple-favicon-iphone.png" />
+        <link rel="apple-touch-icon-precomposed" sizes="72x72" href="img/apple-favicon-ipad.png" />
+        <link rel="apple-touch-icon-precomposed" sizes="144x144" href="img/apple-favicon-ipad.png" />
+
+        <link rel="stylesheet" type="text/css" href="css/vendor/normalize.css" />
+        <link rel="stylesheet" type="text/css" href="css/vendor/animate.css" />
+        <link rel="stylesheet/less" type="text/css" href="css/main.less" />
+
+
+        <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.css" />
+
+
+        <script type="text/javascript" src="js/vendor/less-1.3.3.min.js"></script>
+
+        <script type="text/javascript" src="js/vendor/jquery-1.9.0.min.js"></script>
+        <script src="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.js"></script>
+
+        <script type="text/javascript" src="js/vendor/knockout-2.2.1.js"></script>
+        <script type="text/javascript" src="js/vendor/knockout.mapping-2.4.1.js"></script>
+
+        <script type="text/javascript" src="js/utilityFunctions.js"></script>
+        <script type="text/javascript" src="js/LocalStorageRepository.js"></script>
+        <script type="text/javascript" src="js/SudokuViewModel.js"></script>
+        <script type="text/javascript" src="js/Generator.js"></script>
+        <script type="text/javascript" src="js/VoiceOverManager.js"></script>
+        <script type="text/javascript" src="js/MainMenuController.js"></script>
+        <script type="text/javascript" src="js/OptionsController.js"></script>
+        <script type="text/javascript" src="js/SudokuBoardController.js"></script>
+        <script type="text/javascript" src="js/main.js"></script>        
     </head>
     <body>
-        <div class="app">
-            <h1>PhoneGap</h1>
-            <div id="deviceready" class="blink">
-                <p class="event listening">Connecting to Device</p>
-                <p class="event received">Device is Ready</p>
-            </div>
+    <div class="applicationWrapper">
+        <!--
+                        <div id="messageOutput" aria-live="assertive"></div>
+
+                        <a href="https://github.com/eddielee6/Accessible-Sudoku" class="fork-link">
+                          <img style="position: absolute; top: 0; left: 0; border: 0;" src="img/fork-me-black.png" alt="Fork me on GitHub" class="git-black">
+                          <img style="position: absolute; top: 0; left: 0; border: 0;" src="img/fork-me-white.png" alt="Fork me on GitHub" class="git-white">
+                        </a>
+
+                         <div class="ledge"></div>
+
+          <div class="animated bounceInDown">
+          <img src="img/logo_light@2x.png" width="650" height="231" class="logo light" alt="" />
+          <img src="img/logo_dark@2x.png" width="650" height="231" class="logo dark" alt="" />
         </div>
-        <script type="text/javascript" src="phonegap.js"></script>
-        <script type="text/javascript" src="js/index.js"></script>
-        <script type="text/javascript">
-            app.initialize();
-        </script>
-    </body>
+-->
+        <div id="menuScreen" class="screen animated bounceInLeft" aria-hidden="true">
+            <header data-role="header" data-position="fixed" data-fullscreen="true">
+                <a class="back ui-btn ui-icon-arrow-l ui-btn-icon-notext ui-corner-all"></a>
+                <h1 data-bind="text: GameTitle"></h1>
+            </header>
+            <content class="content">
+            <div data-role="controlgroup" class="mainMenu menu">
+                <div data-action="continue" class="menuItem ui-input-btn ui-btn">Continue</div>
+                <div data-action="newGame" class="menuItem ui-btn">New Game</div>
+                <div data-action="options" class="menuItem ui-btn">Options</div>
+                <div data-action="help" class="menuItem ui-btn">Help</div>
+             </div>
+            </content>
+        </div>
+  	    
+        <div id="gameScreen" class="screen" aria-hidden="true">
+            <header data-role="header" data-position="fixed" data-fullscreen="true">
+                <a class="back ui-btn ui-icon-arrow-l ui-btn-icon-notext ui-corner-all">No text</a>
+                <h1 data-bind="text: GameTitle"></h1>
+            </header>
+
+          <div class="gameGridWrapper">
+            <div class="gameComplete" data-bind="visible: IsComplete()">
+              <h1>Game Complete!</h1>
+              <h2>Well done!</h2>
+            </div>
+            <div class="gameGrid" data-bind="foreach: Squares, css: { inprogress: !IsComplete() }">
+              <div class="squareWrapper">
+                <div class="square" data-bind="foreach: Cells">
+                  <div class="cellWrapper" data-bind="event: { click: $root.SelectClickedCell }">
+                    <div class="inputPad" data-bind="visible: DisplayInputPad, css: { rightHandSide: ($parentContext.$index()%3), bottomRow: ($parentContext.$index()>5) }">
+                      <table>
+                        <tr>
+                          <td class="inputButton" data-bind="event: { click: $root.SetValueFromInputPad.bind($data, '1') }, css: { current: (CurrentValue() == '1') }">1</td>
+                          <td class="inputButton" data-bind="event: { click: $root.SetValueFromInputPad.bind($data, '2') }, css: { current: (CurrentValue() == '2') }">2</td>
+                          <td class="inputButton" data-bind="event: { click: $root.SetValueFromInputPad.bind($data, '3') }, css: { current: (CurrentValue() == '3') }">3</td>
+                        </tr>
+                        <tr>
+                          <td class="inputButton" data-bind="event: { click: $root.SetValueFromInputPad.bind($data, '4') }, css: { current: (CurrentValue() == '4') }">4</td>
+                          <td class="inputButton" data-bind="event: { click: $root.SetValueFromInputPad.bind($data, '5') }, css: { current: (CurrentValue() == '5') }">5</td>
+                          <td class="inputButton" data-bind="event: { click: $root.SetValueFromInputPad.bind($data, '6') }, css: { current: (CurrentValue() == '6') }">6</td>
+                        </tr>
+                        <tr>
+                          <td class="inputButton" data-bind="event: { click: $root.SetValueFromInputPad.bind($data, '7') }, css: { current: (CurrentValue() == '7') }">7</td>
+                          <td class="inputButton" data-bind="event: { click: $root.SetValueFromInputPad.bind($data, '8') }, css: { current: (CurrentValue() == '8') }">8</td>
+                          <td class="inputButton" data-bind="event: { click: $root.SetValueFromInputPad.bind($data, '9') }, css: { current: (CurrentValue() == '9') }">9</td>
+                        </tr>
+                        <tr>
+                          <td colspan="3" class="inputButton" data-bind="event: { click: $root.SetValueFromInputPad.bind($data, '') }">clear</td>
+                        </tr>
+                      </table>
+                    </div>
+                    <div class="cell" data-bind="css: { 'selected': IsSelected, hasInputPad: DisplayInputPad, editable: IsEditable, markAsInvalid: MarkAsInvalid, markAsValid: MarkAsValid }, attr: { 'data-row': RowIndex, 'data-col': ColIndex }">
+                      <div class="cellValue" data-bind="text: CurrentValue"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="clearFix"></div>
+          </div>
+            <footer>
+                <div class="controls" data-role="controlgroup" data-type="horizontal" class="mainMenu menu">
+                    <div class="button validateButton ui-input-btn ui-btn" data-action="validate" data-bind="css: { disabled: IsComplete()}">Validate</div>
+                    <div class="button hintButton ui-input-btn ui-btn" data-action="hint" data-bind="text: HintLabel, css: { disabled: AvailableHints() <= 0 || IsComplete()}"></div>
+                    <div class="button newGameButton ui-input-btn ui-btn" data-action="newGame">New Game</div>
+                </div>
+            </footer>
+
+        </div>
+
+        <div id="optionsScreen" class="screen" aria-hidden="true">
+            <header data-role="header" data-position="fixed" data-fullscreen="true">
+                <a class="back ui-btn ui-icon-arrow-l ui-btn-icon-notext ui-corner-all"></a>
+                <h1>Options</h1>
+            </header>
+          
+          <ul class="optionsMenu menu">
+            <li>
+              <div class="leftArrow"></div>
+              <div data-optionId="difficulty" data-options="{difficulty-medium:Medium},{difficulty-hard:Hard},{difficulty-easy:Easy}" class="menuItem">
+                <span class="name">Difficulty</span>
+                <span class="value"></span>
+              </div>
+              <div class="rightArrow"></div>
+            </li>
+<!--
+          	<li>
+              <div class="leftArrow"></div>
+              <div data-optionId="theme" data-options="{default:Oriental},{dark:Dark},{light:Light}" class="menuItem">
+                <span class="name">Theme</span>
+                <span class="value"></span>
+              </div>
+              <div class="rightArrow"></div>
+            </li>
+          	<li class="desktop-only">
+              <div class="leftArrow"></div>
+              <div data-optionId="size" data-options="{normal:Normal},{bigger:Bigger},{biggest:Biggest}" class="menuItem">
+                <span class="name">Text Size</span>
+                <span class="value"></span>
+              </div>
+              <div class="rightArrow"></div>
+            </li>
+          	<li>
+              <div class="leftArrow"></div>
+              <div data-optionId="font" data-options="{standard:Default},{dyslexic:Dyslexic}" class="menuItem">
+                <span class="name">Font Style</span>
+                <span class="value"></span>
+              </div>
+              <div class="rightArrow"></div>
+            </li>
+-->          </ul>
+        </div>
+
+        <div id="helpScreen" class="screen" aria-hidden="true">
+            <header data-role="header" data-position="fixed" data-fullscreen="true">
+                <a class="back ui-btn ui-icon-arrow-l ui-btn-icon-notext ui-corner-all"></a>
+                <h1>Help</h1>
+            </header>
+<!--
+          <div class="desktop-only content">
+            <ul>
+              <li>To navigate around the game, you can use the arrow keys on your keyboard, or the W, A, S, D keys. The return key is used to choose a specific option once it has been highlighted. The escape key or the on-screen arrow is used to go back to the previous page.</li>
+              <li>You can also navigate using your mouse, hovering over options will highlight them, and clicking them will choose them.</li>
+              <li>The 'R' key can be used to prompt the screen-reader to read the contents of a row, the 'C' key for a column and the 'B' key for a box.</li>
+              <li>The 'V' key can be used to validate the Sudoku grid, this highlights all valid cells in green and all invalid cells in red. The 'N' key creates a new game session and the 'H' key will provide a hint.</li>
+            </ul>
+            <img src="img/keyboard@2x.png" width="566" height="270" class="keyboard" alt="" />
+          </div>
+          
+          <div class="mobile-only content">
+            <p>To navigate around the Sudoku game board, you can tap each cell with your finger. A keypad will appear which will allow you to enter a number by touching a desired digit.</p>
+            <p>The 'validate' button can be tapped to check for valid and invalid cells. Valid cells will glow green whilst invalid cells will glow red.</p>
+            <p>The 'hint' button can be tapped which will automatically populate a cell with a correct digit.</p>
+            <p>To navigate around the menu, you can tap the desired menu item with your finger and use the on-screen arrow to go back to the previous page.</p>
+          </div>
+-->
+        </div>
+
+        <div class="backdrop"></div>
+      </div>
+  </body>
 </html>
