@@ -178,13 +178,6 @@ MainMenuController = function() {
             $(".mainMenu .menuItem").removeClass("selected");
             removeAnimations($("#menuScreen .menuItem"));
 
-            console.log("TEST");
-            console.log("First = " + $(".screen:visible").length   );
-            console.log("First = " + $(".screen:visible").first().id);
-            console.log("First = " + $(".screen:visible").first().type);
-
-
-
             $("#menuScreen .menuItem").show();
 
             setContinueState();
