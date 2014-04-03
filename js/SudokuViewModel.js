@@ -25,6 +25,8 @@ var SudokuViewModel = function() {
 	this.NeedsSave = ko.observable(false);
 	this.Difficulty = ko.observable("");
 
+    this.UseBoardInputPad = ko.observable(false);
+
 	this.IsComplete = ko.observable(false);
 
 	this.InitialHints = 3;
@@ -94,7 +96,8 @@ var SudokuViewModel = function() {
 				if(data.ColIndex() == sender.Squares()[squareIndex].Cells()[cellIndex].ColIndex() && 
 					data.RowIndex() == sender.Squares()[squareIndex].Cells()[cellIndex].RowIndex()) {
 					evt.stopImmediatePropagation();
-					return sender.SetSelectedCell(squareIndex, cellIndex, true);
+                    console.info("SelectClickedCell : " + squareIndex + " ," + cellIndex);
+					return sender.SetSelectedCell(squareIndex, cellIndex, sender.UseBoardInputPad());
 				}
 			};
 		};
