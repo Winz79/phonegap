@@ -156,10 +156,10 @@ MainMenuController = function() {
 
     var initMainMenuButton = function() {
         //Mouse input
-        $(".screen header .back").click(function() {
+        $(".screen div .back").click(function() {
             navigateToMenu();
         });
-        $(".screen header .back").mouseenter(function() {
+        $(".screen div .back").mouseenter(function() {
             voiceOverManager.OutputMessage("Back to main menu");
         });
 
