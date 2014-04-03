@@ -23,10 +23,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="index.html" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="index.html" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="60" column="35" selection-start="3288" selection-end="3288" vertical-scroll-proportion="-3.9230769" vertical-offset="918" max-vertical-offset="3536">
+            <state line="174" column="35" selection-start="10018" selection-end="10018" vertical-scroll-proportion="-0.07323232" vertical-offset="2987" max-vertical-offset="3536">
               <folding />
             </state>
           </provider>
@@ -95,10 +95,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="config.xml" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="config.xml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/config.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="6" column="26" selection-start="278" selection-end="278" vertical-scroll-proportion="0.18246445" vertical-offset="25" max-vertical-offset="1802">
+            <state line="6" column="26" selection-start="278" selection-end="278" vertical-scroll-proportion="0.0" vertical-offset="25" max-vertical-offset="1802">
               <folding />
             </state>
           </provider>
@@ -117,8 +117,8 @@
         <option value="code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.js" />
         <option value="$PROJECT_DIR$/css/main.less" />
         <option value="$PROJECT_DIR$/js/MainMenuController.js" />
-        <option value="$PROJECT_DIR$/index.html" />
         <option value="$PROJECT_DIR$/config.xml" />
+        <option value="$PROJECT_DIR$/index.html" />
       </list>
     </option>
   </component>
@@ -500,16 +500,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/index.html">
+    <entry file="file://$PROJECT_DIR$/config.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="60" column="35" selection-start="3288" selection-end="3288" vertical-scroll-proportion="-3.9230769" vertical-offset="918" max-vertical-offset="3536">
+        <state line="6" column="26" selection-start="278" selection-end="278" vertical-scroll-proportion="0.0" vertical-offset="25" max-vertical-offset="1802">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/config.xml">
+    <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="26" selection-start="278" selection-end="278" vertical-scroll-proportion="0.18246445" vertical-offset="25" max-vertical-offset="1802">
+        <state line="174" column="35" selection-start="10018" selection-end="10018" vertical-scroll-proportion="-0.07323232" vertical-offset="2987" max-vertical-offset="3536">
           <folding />
         </state>
       </provider>
