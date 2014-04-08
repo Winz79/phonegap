@@ -155,6 +155,10 @@ MainMenuController = function() {
     };
 
     var initMainMenuButton = function() {
+
+        document.addEventListener('backbutton', function(e) {
+            navigateToMenu();
+        },false);
         //Mouse input
         $(".screen div .back").click(function() {
             navigateToMenu();

@@ -37,6 +37,15 @@ var SudokuViewModel = function() {
     this.DisplaySelectedRowsColumns = ko.observable(true);
     this.DisplaySelectedNumbers = ko.observable(true);
 
+    this.CurrentNumber = ko.observable('0');
+
+    this.IsCurrentNumber  = ko.computed(function(n) {
+        var cur = this.CurrentNumber();
+        var res = (cur == n);
+        return res;
+    },this);
+
+
 	this.GameTitle = ko.computed(function() {
 		return capitaliseFirstLetter(this.Difficulty()) + " Game";
 	}, this);
@@ -54,6 +63,7 @@ var SudokuViewModel = function() {
                 // Selected cell
 				if(squareIndex == square && cellIndex == cell) {
 					sender.Squares()[squareIndex].Cells()[cellIndex].IsSelected(true);
+                    sender.CurrentNumber(sender.Squares()[squareIndex].Cells()[cellIndex].CurrentValue());
 
                     if(sender.DisplaySelectedRowsColumns()) {
                         sender.Squares()[squareIndex].Cells()[cellIndex].IsNumberSelected(true);
@@ -124,13 +134,6 @@ var SudokuViewModel = function() {
 		};
 	};
 
-    this.GetSelectedNumber = function() {
-        var r = sender.GetSelectedCell();
-        var square = r.square;
-        var cell = r.cell;
-        return cell.CurrentValue();
-    }
-
 
 	this.SetCellValue = function(square, cell, value) {
 		if(sender.IsComplete()) return; //Don't run when game is complete
@@ -138,7 +141,10 @@ var SudokuViewModel = function() {
 			sender.Squares()[square].Cells()[cell].CurrentValue(value);
 			sender.Squares()[square].Cells()[cell].WasSelectedWithMouse(false);
 			sender.Squares()[square].Cells()[cell].IsValid(true);
-			sender.RequestSave();
+
+            sender.CurrentNumber(value);
+
+            sender.RequestSave();
         }
 	};
 

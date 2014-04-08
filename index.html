@@ -120,16 +120,16 @@
           </div>
 
           <div class="inputPad">
-                  <div class="numberPad ui-btn" data-bind="event: { click : $root.SetValueFromInputPad2.bind($data,'1') }" >1</div>
-                  <div class="numberPad ui-btn" data-bind="event: { click : $root.SetValueFromInputPad2.bind($data,'2') }">2</div>
-                  <div class="numberPad ui-btn ui-btn-active" data-bind="event: { click : $root.SetValueFromInputPad2.bind($data,'3') }">3</div>
-                  <div class="numberPad ui-btn" data-bind="event: { click : $root.SetValueFromInputPad2.bind($data,'4') }">4</div>
-                  <div class="numberPad ui-btn" data-bind="event: { click : $root.SetValueFromInputPad2.bind($data,'5') }">5</div>
-                  <div class="numberPad ui-btn" data-bind="event: { click : $root.SetValueFromInputPad2.bind($data,'6') }">6</div>
-                  <div class="numberPad ui-btn ui-btn-active" data-bind="event: { click : $root.SetValueFromInputPad2.bind($data,'7') }">7</div>
-                  <div class="numberPad ui-btn" data-bind="event: { click : $root.SetValueFromInputPad2.bind($data,'8') }">8</div>
-                  <div class="numberPad ui-btn" data-bind="event: { click : $root.SetValueFromInputPad2.bind($data,'9') }">9</div>
-                  <div class="numberPad ui-btn" data-bind="event: { click : $root.SetValueFromInputPad2.bind($data,'') }">clr</div>
+                  <div class="numberPad ui-btn" data-bind="css: {'ui-btn-active': CurrentNumber() == '1'} ,event: { click : SetValueFromInputPad2.bind($data,'1') }" >1</div>
+                  <div class="numberPad ui-btn" data-bind="css: {'ui-btn-active': CurrentNumber() == '2'} ,event: { click : SetValueFromInputPad2.bind($data,'2') }">2</div>
+                  <div class="numberPad ui-btn" data-bind="css: {'ui-btn-active': CurrentNumber() == '3'} ,event: { click : SetValueFromInputPad2.bind($data,'3') } ">3</div>
+                  <div class="numberPad ui-btn" data-bind="css: {'ui-btn-active': CurrentNumber() == '4'} ,event: { click : SetValueFromInputPad2.bind($data,'4') }">4</div>
+                  <div class="numberPad ui-btn" data-bind="css: {'ui-btn-active': CurrentNumber() == '5'} ,event: { click : SetValueFromInputPad2.bind($data,'5') }">5</div>
+                  <div class="numberPad ui-btn" data-bind="css: {'ui-btn-active': CurrentNumber() == '6'} ,event: { click : SetValueFromInputPad2.bind($data,'6') }">6</div>
+                  <div class="numberPad ui-btn ui-btn-active" data-bind="css: {'ui-btn-active': CurrentNumber() == '7'} ,event: { click : SetValueFromInputPad2.bind($data,'7') }">7</div>
+                  <div class="numberPad ui-btn" data-bind="css: {'ui-btn-active': CurrentNumber() == '8'} ,event: { click : SetValueFromInputPad2.bind($data,'8') }">8</div>
+                  <div class="numberPad ui-btn" data-bind="css: {'ui-btn-active': CurrentNumber() == '9'} ,event: { click : SetValueFromInputPad2.bind($data,'9') }">9</div>
+                  <div class="numberPad ui-btn" data-bind="css: {'ui-btn-active': CurrentNumber() == '0'} ,event: { click : SetValueFromInputPad2.bind($data,'') }"><-</div>
           </div>
             <div class="clearFix"></div>
             <footer>
