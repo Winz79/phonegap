@@ -4,12 +4,12 @@
 <widget xmlns     = "http://www.w3.org/ns/widgets"
         xmlns:gap = "http://phonegap.com/ns/1.0"
         id        = "com.winz.sudoku"
-        version   = "0.0.4">
+        version   = "1.0.0">
 
     <name>Sudoku</name>
 
     <description>
-        A sudoku game
+        A simple sudoku game
     </description>
 
     <author href="http://winz.fr" email="witz.sebastien@gmail.com">

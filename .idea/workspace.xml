@@ -23,15 +23,6 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="index.html" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/index.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="131" column="125" selection-start="8819" selection-end="8819" vertical-scroll-proportion="0.5151515" vertical-offset="2023" max-vertical-offset="3774">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="SudokuBoardController.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/SudokuBoardController.js">
           <provider selected="true" editor-type-id="text-editor">
@@ -44,7 +35,7 @@
       <file leaf-file-name="spec.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/spec.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="51" column="44" selection-start="2127" selection-end="2127" vertical-scroll-proportion="-19.615385" vertical-offset="357" max-vertical-offset="1258">
+            <state line="49" column="56" selection-start="2081" selection-end="2081" vertical-scroll-proportion="-9.192307" vertical-offset="594" max-vertical-offset="1258">
               <folding />
             </state>
           </provider>
@@ -54,6 +45,15 @@
         <entry file="file://$PROJECT_DIR$/js/vendor/knockout-2.2.1.js">
           <provider selected="true" editor-type-id="text-editor">
             <state line="61" column="0" selection-start="29243" selection-end="29243" vertical-scroll-proportion="0.0" vertical-offset="863" max-vertical-offset="1513">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/js/index.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="21" column="0" selection-start="878" selection-end="878" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="646">
               <folding />
             </state>
           </provider>
@@ -82,19 +82,10 @@
       <file leaf-file-name="index.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/spec/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="49" column="75" selection-start="1928" selection-end="1928" vertical-scroll-proportion="0.0" vertical-offset="499" max-vertical-offset="1241">
+            <state line="22" column="42" selection-start="978" selection-end="998" vertical-scroll-proportion="0.0" vertical-offset="244" max-vertical-offset="1241">
               <folding>
                 <element signature="n#!!doc" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="main.less" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/css/main.less">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="397" column="29" selection-start="11353" selection-end="11353" vertical-scroll-proportion="-5.6666665" vertical-offset="6460" max-vertical-offset="20723">
-              <folding />
             </state>
           </provider>
         </entry>
@@ -103,6 +94,15 @@
         <entry file="file://$PROJECT_DIR$/spec/lib/jasmine-1.2.0/jasmine.css">
           <provider selected="true" editor-type-id="text-editor">
             <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="663" max-vertical-offset="1479">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="config.xml" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/config.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="41" column="17" selection-start="2122" selection-end="2122" vertical-scroll-proportion="-1.6184834" vertical-offset="1380" max-vertical-offset="1802">
               <folding />
             </state>
           </provider>
@@ -129,11 +129,12 @@
       <list>
         <option value="code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.js" />
         <option value="$PROJECT_DIR$/js/MainMenuController.js" />
-        <option value="$PROJECT_DIR$/config.xml" />
         <option value="/vm:233" />
         <option value="$PROJECT_DIR$/js/SudokuViewModel.js" />
         <option value="$PROJECT_DIR$/css/main.less" />
         <option value="$PROJECT_DIR$/index.html" />
+        <option value="$PROJECT_DIR$/js/index.js" />
+        <option value="$PROJECT_DIR$/config.xml" />
       </list>
     </option>
   </component>
@@ -184,6 +185,20 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="phonegap" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SudokoApp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="phonegap" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="spec" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -256,6 +271,11 @@
       <ConfigurationWrapper RunnerId="JavascriptDebugRunner" />
       <method />
     </configuration>
+    <configuration default="false" name="spec.html" type="JavascriptDebugType" factoryName="JavaScript Debug" singleton="true" temporary="true" uri="http://localhost:63342/SudokoApp/spec.html">
+      <RunnerSettings RunnerId="JavascriptDebugRunner" />
+      <ConfigurationWrapper RunnerId="JavascriptDebugRunner" />
+      <method />
+    </configuration>
     <configuration default="true" type="DartCommandLineRunConfigurationType" factoryName="Dart Command Line Application">
       <option name="VMOptions" />
       <option name="arguments" />
@@ -292,12 +312,14 @@
       <browser start="false" url="" with-js-debugger="false" />
       <method />
     </configuration>
-    <list size="1">
+    <list size="2">
       <item index="0" class="java.lang.String" itemvalue="JavaScript Debug.index.html" />
+      <item index="1" class="java.lang.String" itemvalue="JavaScript Debug.spec.html" />
     </list>
     <recent_temporary>
-      <list size="1">
+      <list size="2">
         <item index="0" class="java.lang.String" itemvalue="JavaScript Debug.index.html" />
+        <item index="1" class="java.lang.String" itemvalue="JavaScript Debug.spec.html" />
       </list>
     </recent_temporary>
   </component>
@@ -619,23 +641,9 @@
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3162" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="935">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/js/LocalStorageRepository.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="833">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="26" selection-start="278" selection-end="278" vertical-scroll-proportion="0.0" vertical-offset="25" max-vertical-offset="1802">
           <folding />
         </state>
       </provider>
@@ -659,25 +667,9 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/spec.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="51" column="44" selection-start="2127" selection-end="2127" vertical-scroll-proportion="-19.615385" vertical-offset="357" max-vertical-offset="1258">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/spec/helper.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="742">
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/spec/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="49" column="75" selection-start="1928" selection-end="1928" vertical-scroll-proportion="0.0" vertical-offset="499" max-vertical-offset="1241">
           <folding>
             <element signature="n#!!doc" expanded="true" />
           </folding>
@@ -726,9 +718,39 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/spec/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="22" column="42" selection-start="978" selection-end="998" vertical-scroll-proportion="0.0" vertical-offset="244" max-vertical-offset="1241">
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="21" column="0" selection-start="878" selection-end="878" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="646">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="131" column="125" selection-start="8819" selection-end="8819" vertical-scroll-proportion="0.5151515" vertical-offset="2023" max-vertical-offset="3774">
+        <state line="131" column="125" selection-start="8819" selection-end="8819" vertical-scroll-proportion="-50.346153" vertical-offset="918" max-vertical-offset="3774">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spec.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="49" column="56" selection-start="2081" selection-end="2081" vertical-scroll-proportion="-9.192307" vertical-offset="594" max-vertical-offset="1258">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="41" column="17" selection-start="2122" selection-end="2122" vertical-scroll-proportion="-1.6184834" vertical-offset="1380" max-vertical-offset="1802">
           <folding />
         </state>
       </provider>
