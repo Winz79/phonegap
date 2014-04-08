@@ -381,21 +381,28 @@ html {
 
             &#gameScreen {
               .inputPad {
-                position:relative;
-                margin-right:auto;
-                margin-left:auto;
-                ;
+                .borderBox;
+                margin: 0.5em auto 0;
+                width: 90%;
+                border: 1px solid black;
+                background-color: grey;
+
+                .numberPad{
+                  .borderBox;
+                  float: left;
+                  //background-color: black;
+                  margin:2px;
+                  border-radius: 4px;
+
+                  width: 10%;
+                  padding: 0.5em;
+                }
 
                 .inputPadLine {
                   margin-right:auto;
                   margin-left:auto;
-                  margin-top:0px;
-                  margin-bottom:0px;
 
-                  .numberPad{
-                      float: left;
-                      //background-color: black;
-                    }
+
                 }
               }
                 .controls {

@@ -46,7 +46,7 @@ var SudokuViewModel = function() {
 		if(sender.IsComplete()) return; //Don't run when game is complete
 		for (var squareIndex = 0; squareIndex < sender.Squares().length; squareIndex++) {
 			for (var cellIndex = 0; cellIndex < sender.Squares()[squareIndex].Cells().length; cellIndex++) {
-				if(squareIndex == square && cellIndex == cell) {
+				if(squareIndex == square && cellIndex == cell && sender.Squares()[squareIndex].Cells()[cellIndex].IsEditable()) {
 					sender.Squares()[squareIndex].Cells()[cellIndex].IsSelected(true);
 					if(displayInputPad) {
 						sender.Squares()[squareIndex].Cells()[cellIndex].WasSelectedWithMouse(true);
@@ -103,7 +103,7 @@ var SudokuViewModel = function() {
 		};
 	};
 
-	this.SetValueFromInputPad = function(value, data, evt) {
+    this.SetValueFromInputPad = function(value, data, evt) {
 		for (var squareIndex = 0; squareIndex < sender.Squares().length; squareIndex++) {
 			for (var cellIndex = 0; cellIndex < sender.Squares()[squareIndex].Cells().length; cellIndex++) {
 				if(data.ColIndex() == sender.Squares()[squareIndex].Cells()[cellIndex].ColIndex() && 
@@ -115,6 +115,19 @@ var SudokuViewModel = function() {
 			};
 		};
 	};
+
+    this.SetValueFromInputPad2 = function(value,data,evt) {
+        var currentSelection = sender.GetSelectedCell();
+        if(!currentSelection) return;
+
+        var square = currentSelection.square;
+        var cell = currentSelection.cell;
+
+        evt.stopImmediatePropagation();
+        sender.SetCellValue(square, cell, value);
+        return;
+
+    }
 
 	this.ResetAllValidationFlags = function() {
 		for (var squareIndex = 0; squareIndex < sender.Squares().length; squareIndex++) {
