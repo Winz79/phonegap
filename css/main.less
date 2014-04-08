@@ -548,13 +548,28 @@ html {
                                         }
 
                                         &.selected {
-                                            border: 1px solid @oriental_cellEditableText;
+                                            //border: 1px solid dodgerblue;
+                                        }
+
+                                        &.numberSelected {
+                                          color: dodgerblue;
+                                        }
+
+                                        &.rowSelected {
+                                          border-top: 2px solid dodgerblue;
+                                          border-bottom: 2px solid dodgerblue;
+                                        }
+
+                                        &.columnSelected {
+                                          border-left: 2px solid dodgerblue;
+                                          border-right: 2px solid dodgerblue;
                                         }
 
                                         &.editable {
                                             background: @oriental_cellEditable;
                                             color: @oriental_cellEditableText;
                                         }
+
 
                                         &.invalid {
                                             background-color: @oriental_cellInvalid;
@@ -744,9 +759,12 @@ html {
                             .squareWrapper {
                                 .square {
                                     .cellWrapper {
-                                        .inputPad {
-                                            font-size: 1.2em;
+                                      .cell {
+                                        &.selected {
+                                          z-index: 1000;
+                                          .grow;
                                         }
+                                      }
                                     }
                                 }
                             }

@@ -34,6 +34,9 @@ var SudokuViewModel = function() {
 
 	this.Squares = ko.observableArray();
 
+    this.DisplaySelectedRowsColumns = ko.observable(true);
+    this.DisplaySelectedNumbers = ko.observable(true);
+
 	this.GameTitle = ko.computed(function() {
 		return capitaliseFirstLetter(this.Difficulty()) + " Game";
 	}, this);
@@ -44,17 +47,58 @@ var SudokuViewModel = function() {
 
 	this.SetSelectedCell = function(square, cell, displayInputPad) {
 		if(sender.IsComplete()) return; //Don't run when game is complete
+        var selectedValue = sender.Squares()[square].Cells()[cell].CurrentValue();
+
 		for (var squareIndex = 0; squareIndex < sender.Squares().length; squareIndex++) {
 			for (var cellIndex = 0; cellIndex < sender.Squares()[squareIndex].Cells().length; cellIndex++) {
-				if(squareIndex == square && cellIndex == cell && sender.Squares()[squareIndex].Cells()[cellIndex].IsEditable()) {
+                // Selected cell
+				if(squareIndex == square && cellIndex == cell) {
 					sender.Squares()[squareIndex].Cells()[cellIndex].IsSelected(true);
+
+                    if(sender.DisplaySelectedRowsColumns()) {
+                        sender.Squares()[squareIndex].Cells()[cellIndex].IsNumberSelected(true);
+                    }
+
+                    if(sender.DisplaySelectedRowsColumns()) {
+                        sender.Squares()[squareIndex].Cells()[cellIndex].IsColumnSelected(false);
+                        sender.Squares()[squareIndex].Cells()[cellIndex].IsRowSelected(false);
+                    }
 					if(displayInputPad) {
 						sender.Squares()[squareIndex].Cells()[cellIndex].WasSelectedWithMouse(true);
 					}
-				} else {
-					sender.Squares()[squareIndex].Cells()[cellIndex].IsSelected(false);
-					sender.Squares()[squareIndex].Cells()[cellIndex].WasSelectedWithMouse(false);
 				}
+                // Other cells
+                else {
+                    sender.Squares()[squareIndex].Cells()[cellIndex].IsSelected(false);
+					sender.Squares()[squareIndex].Cells()[cellIndex].WasSelectedWithMouse(false);
+
+
+
+                   if(sender.DisplaySelectedRowsColumns() && sender.Squares()[squareIndex].Cells()[cellIndex].CurrentValue() == selectedValue) {
+                        sender.Squares()[squareIndex].Cells()[cellIndex].IsNumberSelected(true);
+                    }
+                    else {
+                        sender.Squares()[squareIndex].Cells()[cellIndex].IsNumberSelected(false);
+                    }
+
+                    // same row than the selected cell
+                    if(sender.DisplaySelectedRowsColumns()) {
+                        if(Math.floor(squareIndex / 3) == Math.floor(square / 3) && Math.floor(cellIndex / 3) == Math.floor(cell / 3)) {
+                            sender.Squares()[squareIndex].Cells()[cellIndex].IsRowSelected(true);
+                        }
+                        else
+                            sender.Squares()[squareIndex].Cells()[cellIndex].IsRowSelected(false);
+
+                        if((squareIndex % 3) == (square % 3) && (cellIndex % 3) == (cell % 3)) {
+                            sender.Squares()[squareIndex].Cells()[cellIndex].IsColumnSelected(true);
+                        }
+                        else
+                            sender.Squares()[squareIndex].Cells()[cellIndex].IsColumnSelected(false);
+                    }
+
+                }
+
+
 			};
 		};
 	};
@@ -79,6 +123,14 @@ var SudokuViewModel = function() {
 			};
 		};
 	};
+
+    this.GetSelectedNumber = function() {
+        var r = sender.GetSelectedCell();
+        var square = r.square;
+        var cell = r.cell;
+        return cell.CurrentValue();
+    }
+
 
 	this.SetCellValue = function(square, cell, value) {
 		if(sender.IsComplete()) return; //Don't run when game is complete
@@ -155,6 +207,10 @@ var CellViewModel = function() {
 	this.IsSelected = ko.observable(false);
 	this.IsValid = ko.observable(true);
 
+    this.IsNumberSelected = ko.observable(false);
+    this.IsRowSelected = ko.observable(false);
+    this.IsColumnSelected = ko.observable(false);
+
 	this.WasSelectedWithMouse = ko.observable(false);
 
 	this.IsEditable = ko.computed(function() {
@@ -176,4 +232,6 @@ var CellViewModel = function() {
     this.MarkAsValid = ko.computed(function() {
         return this.IsFilled() && this.IsEditable() && this.IsValid();
     }, this);
+
+
 };

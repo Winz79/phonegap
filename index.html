@@ -109,7 +109,7 @@
                         </tr>
                       </table>
                     </div>
-                    <div class="cell" data-bind="css: { 'selected': IsSelected, hasInputPad: DisplayInputPad, editable: IsEditable, markAsInvalid: MarkAsInvalid, markAsValid: MarkAsValid }, attr: { 'data-row': RowIndex, 'data-col': ColIndex }">
+                    <div class="cell" data-bind="css: { 'selected': IsSelected, 'numberSelected':IsNumberSelected, 'rowSelected':IsRowSelected, 'columnSelected':IsColumnSelected,  hasInputPad: DisplayInputPad, editable: IsEditable, markAsInvalid: MarkAsInvalid, markAsValid: MarkAsValid }, attr: { 'data-row': RowIndex, 'data-col': ColIndex }">
                       <div class="cellValue" data-bind="text: CurrentValue"></div>
                     </div>
                   </div>
@@ -147,8 +147,24 @@
                 <a class="back ui-btn ui-icon-arrow-l ui-btn-icon-notext ui-corner-all"></a>
                 <h1>Options</h1>
             </div>
-          
-          <ul class="optionsMenu menu">
+
+            <div data-role="fieldcontain" class="optionsMenu menu">
+                <fieldset data-role="controlgroup">
+                    <label for="checkbox-1">Highlight Selected Number</label>
+                    <input type="checkbox" name="checkbox-1" id="checkbox-1" class="custom" />
+                    <label for="checkbox-2">Show Grid and Rows Lines</label>
+                    <input type="checkbox" name="checkbox-2" id="checkbox-2" class="custom" />
+                    <label for="select-choice-0" class="select">Difficulty:</label>
+                    <select data-optionId="difficulty" name="select-choice-0" id="select-choice-0">
+                        <option value="difficulty-easy">Easy</option>
+                        <option value="difficulty-medium">Medium</option>
+                        <option value="difficulty-hard">Hard</option>
+                    </select>
+                </fieldset>
+            </div>
+
+
+            <ul class="optionsMenu menu">
             <li>
               <div class="leftArrow"></div>
               <div data-optionId="difficulty" data-options="{difficulty-medium:Medium},{difficulty-hard:Hard},{difficulty-easy:Easy}" class="menuItem">
@@ -157,6 +173,7 @@
               </div>
               <div class="rightArrow"></div>
             </li>
+
 <!--
           	<li>
               <div class="leftArrow"></div>
