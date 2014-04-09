@@ -156,6 +156,9 @@ MainMenuController = function() {
 
     var initMainMenuButton = function() {
 
+        document.addEventListener('menubutton', function(e) {
+            $("#optionsScreen").addClass("animated bounceInLeft").show();
+        },false);
 
         document.addEventListener('backbutton', function(e) {
             if(!$("#menuScreen").is(":visible")) {

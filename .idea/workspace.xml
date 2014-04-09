@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="aefab720-356b-4430-b7fa-32d26d8e664e" name="Default" comment="">
+    <list default="true" id="aefab720-356b-4430-b7fa-32d26d8e664e" name="Default" comment="Exit app when back button pressed on homepage&#10;">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/MainMenuController.js" afterPath="$PROJECT_DIR$/js/MainMenuController.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config.xml" afterPath="$PROJECT_DIR$/config.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
@@ -369,7 +370,11 @@
       <created>1397037607546</created>
       <updated>1397037607546</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Exit app when back button pressed on homepage">
+      <created>1397037663876</created>
+      <updated>1397037663876</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -437,7 +442,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/js/MainMenuController.js</url>
-          <line>161</line>
+          <line>164</line>
           <option name="timeStamp" value="10" />
         </line-breakpoint>
       </breakpoints>
@@ -790,7 +795,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/js/MainMenuController.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="66" column="28" selection-start="2646" selection-end="2646" vertical-scroll-proportion="0.33333334" vertical-offset="966" max-vertical-offset="3893">
+        <state line="159" column="73" selection-start="7082" selection-end="7082" vertical-scroll-proportion="0.33333334" vertical-offset="2547" max-vertical-offset="3944">
           <folding />
         </state>
       </provider>
