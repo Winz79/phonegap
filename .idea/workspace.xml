@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="aefab720-356b-4430-b7fa-32d26d8e664e" name="Default" comment="Exit app when back button pressed on homepage">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/MainMenuController.js" afterPath="$PROJECT_DIR$/js/MainMenuController.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
+    <list default="true" id="aefab720-356b-4430-b7fa-32d26d8e664e" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config.xml" afterPath="$PROJECT_DIR$/config.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="SudokoApp.iws" />
@@ -49,15 +48,6 @@
         <entry file="file://$PROJECT_DIR$/spec.html">
           <provider selected="true" editor-type-id="text-editor">
             <state line="49" column="56" selection-start="2081" selection-end="2081" vertical-scroll-proportion="-22.923077" vertical-offset="237" max-vertical-offset="1258">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MainMenuController.js" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/js/MainMenuController.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="66" column="28" selection-start="2646" selection-end="2646" vertical-scroll-proportion="0.33333334" vertical-offset="966" max-vertical-offset="3893">
               <folding />
             </state>
           </provider>
@@ -112,6 +102,15 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="config.xml" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/config.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="6" column="26" selection-start="278" selection-end="278" vertical-scroll-proportion="0.21428572" vertical-offset="0" max-vertical-offset="1802">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="OptionsController.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/OptionsController.js">
           <provider selected="true" editor-type-id="text-editor">
@@ -134,6 +133,7 @@
         <option value="Winz79" />
       </list>
     </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
@@ -147,8 +147,8 @@
         <option value="$PROJECT_DIR$/js/vendor/fastclick.js" />
         <option value="$PROJECT_DIR$/index.html" />
         <option value="$PROJECT_DIR$/js/main.js" />
-        <option value="$PROJECT_DIR$/config.xml" />
         <option value="$PROJECT_DIR$/js/MainMenuController.js" />
+        <option value="$PROJECT_DIR$/config.xml" />
       </list>
     </option>
   </component>
@@ -365,6 +365,11 @@
       <created>1396368197761</created>
       <updated>1396368197761</updated>
     </task>
+    <task id="LOCAL-00001" summary="Exit app when back button pressed on homepage">
+      <created>1397037607546</created>
+      <updated>1397037607546</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -783,16 +788,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/config.xml">
+    <entry file="file://$PROJECT_DIR$/js/MainMenuController.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="26" selection-start="278" selection-end="278" vertical-scroll-proportion="0.24170616" vertical-offset="0" max-vertical-offset="1802">
+        <state line="66" column="28" selection-start="2646" selection-end="2646" vertical-scroll-proportion="0.33333334" vertical-offset="966" max-vertical-offset="3893">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/MainMenuController.js">
+    <entry file="file://$PROJECT_DIR$/config.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="66" column="28" selection-start="2646" selection-end="2646" vertical-scroll-proportion="0.33333334" vertical-offset="966" max-vertical-offset="3893">
+        <state line="6" column="26" selection-start="278" selection-end="278" vertical-scroll-proportion="0.21428572" vertical-offset="0" max-vertical-offset="1802">
           <folding />
         </state>
       </provider>
