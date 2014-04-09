@@ -30,6 +30,8 @@ $(function () {
         $("html").addClass("desktop");
     }
 
+    FastClick.attach(document.body);
+
     //Initialize game
     SudokuGame = {
         menu: new MainMenuController()

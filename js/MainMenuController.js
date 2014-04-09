@@ -156,6 +156,7 @@ MainMenuController = function() {
 
     var initMainMenuButton = function() {
 
+
         document.addEventListener('backbutton', function(e) {
             navigateToMenu();
         },false);
