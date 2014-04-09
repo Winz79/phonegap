@@ -158,7 +158,16 @@ MainMenuController = function() {
 
 
         document.addEventListener('backbutton', function(e) {
-            navigateToMenu();
+            if(!$("#menuScreen").is(":visible")) {
+                navigateToMenu();
+            }
+            else {
+                if (navigator.app && navigator.app.exitApp) {
+                    navigator.app.exitApp();
+                } else if (navigator.device && navigator.device.exitApp) {
+                    navigator.device.exitApp();
+                }
+            }
         },false);
         //Mouse input
         $(".screen div .back").click(function() {
